@@ -12,17 +12,16 @@ int fadeAmount = 5;
 
 // the setup function runs once when you press reset or power the board
 void setup() {
-  // initialize digital pin LED_BUILTIN as an output.
+  // initialize LEDPIN and BUTTONPIN
   pinMode(LEDPIN, OUTPUT);
   pinMode(BUTTONPIN, INPUT);
 
 }
 
-// the loop function runs over and over again forever
 void loop() {
 
-  buttonState = digitalRead(BUTTONPIN); // read whether the button was pushed
-  if (buttonState == HIGH) {            // if the button is pushed, adjust the brightness
+  buttonState = digitalRead(BUTTONPIN);   // read whether the button was pushed
+  if (buttonState == HIGH) {              // if the button is pushed, adjust the brightness
     brightness += fadeAmount;
   }
 
@@ -38,9 +37,9 @@ void loop() {
   }
 
   if (buttonState == HIGH)
-    analogWrite(LEDPIN, brightness);    // set the LED to the state of the button
+    analogWrite(LEDPIN, brightness);      // set the LED to the brightness
   else
     analogWrite(LEDPIN, LOW);
 
-  delay(50);                           // wait for 200ms
+  delay(50);                             // wait for 200ms
 }
